@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alliance Career Institute | CBSE IX & X</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Font Awesome for Professional Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Use Inter font family -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Tailwind Configuration */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'aci-dark': '#0F172A', /* Deep Slate for primary elements (header, hero background) */
+                        'aci-dark-light': '#1E293B', /* Slightly lighter dark for backgrounds */
+                        'aci-gold': '#FACC15', /* Gold for accents */
+                        'aci-light': '#F9FAFB', /* Light background */
+                        'aci-primary-text': '#E2E8F0', /* Light text color */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+        /* Custom CSS for gradient and professional feel */
+        .hero-bg {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.2), 0 4px 10px -2px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-shadow:hover {
+            transform: translateY(-8px); /* More noticeable lift on hover */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+        }
+        .text-glow {
+            text-shadow: 0 0 5px rgba(250, 202, 21, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-aci-light font-sans antialiased">
+
+    <!-- Header / Navigation (Premium Dark Theme) -->
+    <header class="bg-aci-dark shadow-xl sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-24">
+            <!-- Institute Name in Big Font (Logo Replaced) -->
+            <a href="#home" class="flex items-center space-x-3">
+                <div class="text-left py-2">
+                    <h1 class="text-3xl sm:text-4xl font-extrabold text-aci-gold leading-tight tracking-tight">
+                        ALLIANCE CAREER INSTITUTE
+                    </h1>
+                    <p class="text-sm sm:text-lg font-medium text-gray-400 mt-1">(Babbar Education)</p>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex space-x-8 text-aci-primary-text font-medium">
+                <a href="#home" class="hover:text-aci-gold transition duration-150 relative group">Home<span class="block h-0.5 bg-aci-gold absolute bottom-0 left-0 w-0 group-hover:w-full transition-all duration-300"></span></a>
+                <a href="#about" class="hover:text-aci-gold transition duration-150 relative group">Our Focus<span class="block h-0.5 bg-aci-gold absolute bottom-0 left-0 w-0 group-hover:w-full transition-all duration-300"></span></a>
+                <a href="#courses" class="hover:text-aci-gold transition duration-150 relative group">Courses IX/X<span class="block h-0.5 bg-aci-gold absolute bottom-0 left-0 w-0 group-hover:w-full transition-all duration-300"></span></a>
+                <a href="#faculty" class="hover:text-aci-gold transition duration-150 relative group">Faculty<span class="block h-0.5 bg-aci-gold absolute bottom-0 left-0 w-0 group-hover:w-full transition-all duration-300"></span></a>
+                <a href="#contact" class="hover:text-aci-gold transition duration-150 relative group">Contact<span class="block h-0.5 bg-aci-gold absolute bottom-0 left-0 w-0 group-hover:w-full transition-all duration-300"></span></a>
+            </nav>
+
+            <!-- Enrollment Button -->
+            <div class="hidden lg:block">
+                <a href="#" class="bg-aci-gold text-aci-dark font-extrabold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-600 transform hover:scale-105 transition duration-300">
+                    Register Now
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="lg:hidden text-aci-gold focus:outline-none p-2 rounded-md hover:bg-aci-dark-light transition duration-150">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Drawer (Hidden by default) -->
+    <div id="mobile-menu" class="lg:hidden fixed top-0 left-0 w-full h-full bg-aci-dark bg-opacity-95 z-40 hidden transition-opacity duration-300 opacity-0">
+        <div class="p-8 space-y-6 flex flex-col items-start pt-24">
+            <button id="close-menu-button" class="absolute top-6 right-6 text-aci-gold hover:text-white transition">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <a href="#home" class="text-3xl font-bold text-white hover:text-aci-gold transition duration-150">Home</a>
+            <a href="#about" class="text-3xl font-bold text-white hover:text-aci-gold transition duration-150">Our Focus</a>
+            <a href="#courses" class="text-3xl font-bold text-white hover:text-aci-gold transition duration-150">Courses IX/X</a>
+            <a href="#faculty" class="text-3xl font-bold text-white hover:text-aci-gold transition duration-150">Faculty</a>
+            <a href="#contact" class="text-3xl font-bold text-white hover:text-aci-gold transition duration-150">Contact</a>
+            <a href="#" class="mt-8 w-full text-center bg-aci-gold text-aci-dark font-extrabold py-4 px-6 rounded-full hover:bg-yellow-600 transition duration-300 shadow-xl">
+                Start Your Journey
+            </a>
+        </div>
+    </div>
+
+    <main>
+        <!-- 1. Hero Section (Targeting CBSE IX & X) -->
+        <section id="home" class="hero-bg py-24 md:py-40 text-white overflow-hidden">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="order-2 lg:order-1 animate-fadeIn">
+                    <p class="text-xl font-semibold text-aci-gold uppercase tracking-widest mb-3">Foundation for Future Success</p>
+                    <h1 class="text-6xl md:text-7xl font-extrabold leading-tight mb-6">
+                        Excellence for <span class="text-aci-gold text-glow">CBSE Class IX & X.</span>
+                    </h1>
+                    <p class="text-xl text-gray-400 mb-10 max-w-lg">
+                        Specialized courses designed to build strong concepts in Science and Mathematics, ensuring top board scores and solid preparation for competitive exams.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
+                        <a href="#courses" class="w-full sm:w-auto text-center bg-aci-gold text-aci-dark font-extrabold py-3.5 px-10 rounded-full text-lg hover:bg-yellow-600 transform hover:scale-105 transition duration-300 shadow-2xl shadow-aci-gold/50">
+                            View Study Plans
+                        </a>
+                        <a href="#contact" class="w-full sm:w-auto text-center bg-transparent border-2 border-aci-gold text-aci-gold font-bold py-3.5 px-10 rounded-full text-lg hover:bg-aci-gold hover:text-aci-dark transition duration-300">
+                            Request Free Demo Class
+                        </a>
+                    </div>
+                </div>
+                <!-- Image/Illustration -->
+                <div class="order-1 lg:order-2 opacity-80">
+                    <img src="https://placehold.co/600x450/1E293B/FACC15?text=IX+%26+X+Foundation+Course" alt="Students studying for exams" class="rounded-3xl shadow-2xl w-full border-4 border-aci-gold/30">
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Why Choose Us Section (Focusing on CBSE needs) -->
+        <section id="about" class="py-16 md:py-28 bg-aci-dark-light text-aci-primary-text">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-center text-aci-gold mb-4">Foundation Built on Trust</h2>
+                <p class="text-xl text-center text-gray-400 mb-16 max-w-4xl mx-auto">
+                    Our methodology is designed for maximum clarity, retention, and application in board exams and future competitive tests.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Feature 1: Conceptual Clarity -->
+                    <div class="p-8 bg-aci-dark rounded-2xl card-shadow border-t-4 border-aci-gold text-center hover:bg-aci-dark-light transition duration-300">
+                        <div class="text-5xl text-aci-gold mb-4">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Conceptual Mastery</h3>
+                        <p class="text-gray-400">Deep dive into fundamentals for a strong base in Science and Mathematics.</p>
+                    </div>
+                    <!-- Feature 2: Exam Preparation -->
+                    <div class="p-8 bg-aci-dark rounded-2xl card-shadow border-t-4 border-aci-gold text-center hover:bg-aci-dark-light transition duration-300">
+                        <div class="text-5xl text-aci-gold mb-4">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Board Exam Ready</h3>
+                        <p class="text-gray-400">Targeted practice, mock tests, and pattern-based question solving for 100% preparation.</p>
+                    </div>
+                    <!-- Feature 3: Competitive Edge -->
+                    <div class="p-8 bg-aci-dark rounded-2xl card-shadow border-t-4 border-aci-gold text-center hover:bg-aci-dark-light transition duration-300">
+                        <div class="text-5xl text-aci-gold mb-4">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Future Foundation</h3>
+                        <p class="text-gray-400">Early exposure to concepts required for JEE/NEET/Olympiads in higher classes.</p>
+                    </div>
+                    <!-- Feature 4: Personalized Attention -->
+                    <div class="p-8 bg-aci-dark rounded-2xl card-shadow border-t-4 border-aci-gold text-center hover:bg-aci-dark-light transition duration-300">
+                        <div class="text-5xl text-aci-gold mb-4">
+                            <i class="fa-solid fa-user-check"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Personalized Mentoring</h3>
+                        <p class="text-gray-400">Small batch sizes ensure every student receives attention and doubt resolution.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Featured Courses Section (CBSE Courses) -->
+        <section id="courses" class="py-16 md:py-28 bg-aci-dark text-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-center text-aci-gold mb-4">Our CBSE Programs</h2>
+                <p class="text-xl text-center text-gray-400 mb-16 max-w-3xl mx-auto">
+                    Structured programs for Class IX and X, focusing on integrated learning and high-scoring strategies.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Course 1: Class X Comprehensive -->
+                    <div class="bg-white rounded-2xl overflow-hidden card-shadow">
+                        <img src="https://placehold.co/400x200/FACC15/0F172A?text=CBSE+Class+X+Science" alt="CBSE Class X Course" class="w-full h-52 object-cover">
+                        <div class="p-8">
+                            <h3 class="text-2xl font-extrabold text-aci-dark mb-2">Class X (Full Year Program)</h3>
+                            <p class="text-gray-600 mb-4">Complete coverage of Science, Math, and SST for board excellence. Includes advanced test series.</p>
+                            <div class="flex justify-between items-center mb-5 text-sm">
+                                <span class="text-aci-dark font-bold"><i class="fa-solid fa-book-open mr-1"></i> All Subjects</span>
+                                <span class="text-green-600 font-bold bg-green-100 px-3 py-1 rounded-full">New Batch June</span>
+                            </div>
+                            <a href="#" class="block w-full text-center bg-aci-dark text-aci-gold font-bold py-3 rounded-xl hover:bg-gray-800 transition duration-300">
+                                Enroll Now →
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Course 2: Class IX Foundation -->
+                    <div class="bg-white rounded-2xl overflow-hidden card-shadow">
+                        <img src="https://placehold.co/400x200/0F172A/FACC15?text=CBSE+Class+IX+Math" alt="CBSE Class IX Course" class="w-full h-52 object-cover">
+                        <div class="p-8">
+                            <h3 class="text-2xl font-extrabold text-aci-dark mb-2">Class IX (Foundation Course)</h3>
+                            <p class="text-gray-600 mb-4">Focus on core concepts in Physics, Chemistry, Biology, and Algebra for future rigor.</p>
+                            <div class="flex justify-between items-center mb-5 text-sm">
+                                <span class="text-aci-dark font-bold"><i class="fa-solid fa-flask-vial mr-1"></i> PCM & Bio Focus</span>
+                                <span class="text-red-600 font-bold bg-red-100 px-3 py-1 rounded-full">Limited Seats</span>
+                            </div>
+                            <a href="#" class="block w-full text-center bg-aci-dark text-aci-gold font-bold py-3 rounded-xl hover:bg-gray-800 transition duration-300">
+                                Enroll Now →
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Course 3: Summer Crash Course -->
+                    <div class="bg-white rounded-2xl overflow-hidden card-shadow">
+                        <img src="https://placehold.co/400x200/FACC15/0F172A?text=Summer+Revision" alt="Summer Crash Course" class="w-full h-52 object-cover">
+                        <div class="p-8">
+                            <h3 class="text-2xl font-extrabold text-aci-dark mb-2">Math & Science Booster</h3>
+                            <p class="text-gray-600 mb-4">Intensive revision and doubt-solving crash course before term exams.</p>
+                            <div class="flex justify-between items-center mb-5 text-sm">
+                                <span class="text-aci-dark font-bold"><i class="fa-solid fa-bolt mr-1"></i> 6 Weeks</span>
+                                <span class="text-blue-600 font-bold bg-blue-100 px-3 py-1 rounded-full">Summer Special</span>
+                            </div>
+                            <a href="#" class="block w-full text-center bg-aci-dark text-aci-gold font-bold py-3 rounded-xl hover:bg-gray-800 transition duration-300">
+                                See Schedule →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-16">
+                    <a href="#" class="inline-block bg-aci-gold text-aci-dark font-extrabold py-4 px-12 rounded-full text-xl hover:bg-yellow-600 transition duration-300 shadow-2xl shadow-aci-gold/50">
+                        Download Full Syllabus PDF
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Testimonials/Call to Action -->
+        <section class="py-20 md:py-32 bg-aci-light">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p class="text-lg font-semibold text-aci-dark uppercase tracking-widest mb-4">Achieve Your Board Goals</p>
+                <blockquote class="text-3xl md:text-4xl font-serif italic text-aci-dark max-w-5xl mx-auto leading-snug">
+                    "The systematic teaching style at ACI helped me score 98% in my CBSE Class X exams. The practice tests were exactly like the board paper."
+                    <footer class="mt-6 text-xl font-sans font-extrabold text-aci-gold flex items-center justify-center">
+                        <i class="fa-solid fa-star text-yellow-500 mr-2"></i> Priya M., Board Topper 2024
+                    </footer>
+                </blockquote>
+                
+                <h3 class="text-4xl font-extrabold text-aci-dark mt-20 mb-8">Ready to Secure Your Future Score?</h3>
+                <a href="#" class="inline-block bg-aci-dark text-aci-gold font-extrabold py-4 px-14 rounded-full text-xl hover:bg-gray-800 transition duration-300 shadow-2xl border-2 border-aci-gold">
+                    Register for a Free Class Today
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Clean and professional) -->
+    <footer id="contact" class="bg-aci-dark text-gray-400 py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
+            <!-- Column 1: Institute Info -->
+            <div class="md:col-span-2">
+                <h4 class="text-2xl font-bold text-aci-gold mb-2">Alliance Career Institute</h4>
+                <p class="text-lg font-medium text-gray-400 mb-4">(Babbar Education)</p>
+                <p class="mb-4 text-sm max-w-sm">Focused foundation for CBSE IX & X. Building conceptual excellence for strong academic careers.</p>
+                <p class="text-sm">© 2025 Alliance Career Institute. All Rights Reserved.</p>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div>
+                <h4 class="text-xl font-bold text-white mb-6">Quick Links</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#about" class="hover:text-aci-gold transition flex items-center"><i class="fa-solid fa-angle-right w-4 mr-2 text-aci-gold"></i>Exam Schedule</a></li>
+                    <li><a href="#courses" class="hover:text-aci-gold transition flex items-center"><i class="fa-solid fa-angle-right w-4 mr-2 text-aci-gold"></i>Study Material</a></li>
+                    <li><a href="#" class="hover:text-aci-gold transition flex items-center"><i class="fa-solid fa-angle-right w-4 mr-2 text-aci-gold"></i>Fee Structure</a></li>
+                    <li><a href="#" class="hover:text-aci-gold transition flex items-center"><i class="fa-solid fa-angle-right w-4 mr-2 text-aci-gold"></i>Student Login</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Contact Info -->
+            <div>
+                <h4 class="text-xl font-bold text-white mb-6">Contact Details</h4>
+                <ul class="space-y-4 text-sm">
+                    <li class="flex items-start space-x-3">
+                        <i class="fa-solid fa-location-dot w-4 text-aci-gold mt-1"></i>
+                        <span>[Institute Address Placeholder, India]</span>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <i class="fa-solid fa-phone w-4 text-aci-gold"></i>
+                        <span>+91 98765 43210 (Admissions)</span>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <i class="fa-solid fa-envelope w-4 text-aci-gold"></i>
+                        <span>info@alliancecareer.com</span>
+                    </li>
+                </ul>
+                <!-- Social Media -->
+                <div class="flex space-x-4 mt-6 text-xl">
+                    <a href="#" class="text-gray-400 hover:text-aci-gold transition" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-aci-gold transition" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-aci-gold transition" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu Functionality -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuItems = mobileMenu.querySelectorAll('a');
+
+        function toggleMenu() {
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                setTimeout(() => mobileMenu.classList.remove('opacity-0'), 10);
+                document.body.style.overflow = 'hidden'; // Disable background scroll
+            } else {
+                mobileMenu.classList.add('opacity-0');
+                setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+                document.body.style.overflow = ''; // Enable background scroll
+            }
+        }
+
+        mobileMenuButton.addEventListener('click', toggleMenu);
+        closeMenuButton.addEventListener('click', toggleMenu);
+
+        // Close menu when a link is clicked
+        mobileMenuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMenu();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+
